@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class filter
+//REMOTE tugba1 branch'i
+public class fFilter
 {
     public static void main(String[] args) {
 
