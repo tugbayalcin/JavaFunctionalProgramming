@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+//Lambda01 Class'i remote tugba1 branchi commit yapildi
 public class Lambda01
 {
     public static void main(String[] args)
