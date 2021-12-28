@@ -1,9 +1,6 @@
 package P1_lambdaExpressions;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public class Lambda02 {
     public static void main(String[] args) {
@@ -23,6 +20,10 @@ public class Lambda02 {
         carpCiftEleman1(list);
         System.out.println();
         carpCiftEleman2(list);
+        System.out.println();
+        onbestenBuyukEnKucukTekSayi(list);
+        System.out.println();
+        tekKareBuyuktenKucuge(list);
 
     }
 
@@ -106,5 +107,39 @@ public class Lambda02 {
         // eger ilk degeri integer in min degerini secse idik hem listede olmadigi halde min o sayi olacakti
         // hem de listeden hangi sayi gelirse gelsin en kucuk daima kendisi olacakti
         System.out.println(min);
+    }
+
+    // List'teki 15'ten buyuk en kucuk tek sayiyi yazdiriniz
+    public static void onbestenBuyukEnKucukTekSayi(List<Integer> list)
+    {
+        System.out.println(list.
+                stream().
+                filter(t -> t%2==1).
+                filter(t -> t>15).
+                reduce(Integer::min));
+        // veya filtreyi ve baglaci ile teke dusurebiliriz
+        // list.stream().filter(t -> (t%2==1 & t>15)).reduce(Integer::min);
+    }
+
+    // List'teki cift elemanlarin karelerini kucukten buyuge dogru yazdiriniz
+    public static void ciftKareKucuktenBuyuge(List<Integer> list){
+        list.
+                stream().
+                filter(Lambda01::ciftBul).
+                map(t->t*t).
+                sorted().//akısa giren elelmanlar naturel order'e gore siralanir
+                forEach(Lambda01::printEleman);//144 484 1156 1764 3600
+
+    }
+
+    // List'in tek elemanlarinin karelerini buyukten kucuge yazdiriniz
+    public static void tekKareBuyuktenKucuge(List<Integer> list)
+    {
+        list.
+                stream().
+                filter(t -> t%2!=0).
+                map(t -> t*t).
+                sorted(Comparator.reverseOrder()). // akısa giren elelmanlar ters siralanir
+                forEach(Lambda01::printEleman); // 144 484 1156 1764 3600
     }
 }
