@@ -94,6 +94,7 @@ public class Lambda01 {
         System.out.print(t + " ");
     }
 
+    // method reference + java methodlari(System.out::println)
     public static void printElemanFunctional1(List<Integer> list) {
         list.stream().forEach(System.out::println);//elemanlari tektek yazdir
         //forEach( void methodAdi() ) yani -> forEach(gorev)
@@ -128,6 +129,7 @@ public class Lambda01 {
     }
 
     // functional programming ile list elemanlarinin cift olanlarini ayni satirda aralarina bosluk birakarak yazdiriniz
+    // method reference + kendi methodlarimiz(Lambda01::printEleman)
     public static void printCiftElemanFunctional(List<Integer> list)
     {
         list.stream().filter(t->t%2==0).forEach(Lambda01::printEleman);
