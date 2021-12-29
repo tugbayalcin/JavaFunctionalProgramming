@@ -1,6 +1,7 @@
 package P1_lambdaExpressions;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 public class Lambda03 {
     public static void main(String[] args) {
@@ -132,5 +133,24 @@ public class Lambda03 {
                         reversed()). // ters siraladi buyukten kucuge
                 findFirst()); // ilk elemani aldi
 
+    }
+
+    public static void karakteriEnBuyukEleman2 (List<String> list)
+    {
+        Stream<String> sonIsim = list.
+                stream().
+                sorted(Comparator.comparing(t -> t.toString().length()).//lenght karakter uzunluguna gore siraladi k->b
+                        reversed()).//ters sirlad b->k
+                //  findFirst());//ilk elelmani aldi
+                        limit(1);//limit(a) akısdan cıkan elemanları a parametresine dore ilk a elamanı alır
+        System.out.println(Arrays.toString(sonIsim.toArray()));
+    }
+
+    // List elemanlarini son harfine göre siralayip ilk eleman haric kalan elemanlari yazdiniz
+    public static void ilkElemanHaricSonHarfSirali (List<String> list)
+    {
+        list.stream().sorted(Comparator.comparing(t -> t.toString().charAt(t.length()-1))).skip(1).forEach(t -> System.out.print(t + " "));
+        // skip(1) dersen akistan cikan elemanlardan ilk elemani atlar
+        // skip() dersen akistan cikan elemanlardan ilk 3 elemani atlar
     }
 }
